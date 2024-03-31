@@ -9,11 +9,8 @@
 }
 
 body {
-    background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.4), url("/bg.png"));
-    background-size: cover;
-    background-repeat: no-repeat;
+    background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.4)), url("/bg.png") no-repeat center / cover;
     background-attachment: fixed;
-    background-position: center;
 }
 
 /* customize scrollbar */

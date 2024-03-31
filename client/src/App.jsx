@@ -1,10 +1,21 @@
+import { Routes, Route } from "react-router-dom";
+import { Home, Login, Register, Explore, Likes, Sidebar } from "./pagesImport";
+
 
 const App = () => {
   return (
-    <div className="bg-slate-900">
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
+    <div className="flex">
+      <Sidebar />
+
+      <div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/explore" element={<Explore />} />
+          <Route path="/likes" element={<Likes />} />
+        </Routes>
+      </div>
     </div>
   )
 }
