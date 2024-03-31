@@ -4,10 +4,10 @@ import { Home, Login, Register, Explore, Likes, Sidebar } from "./pagesImport";
 
 const App = () => {
   return (
-    <div className="flex">
+    <div className="flex text-white">
       <Sidebar />
 
-      <div>
+      <div className="max-w-5xl my-5 transition-all duration-300 mx-auto flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
