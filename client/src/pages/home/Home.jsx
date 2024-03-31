@@ -1,6 +1,8 @@
 import Search from "../../components/search/Search";
 import SortRepos from "../../components/sortRepo/SortRepos";
 import ProfileDetails from "../../components/profileDetails/ProfileDetails";
+import Repos from "../../components/repos/Repos";
+import Spinner from "../../components/spinner/Spinner";
 
 const Home = () => {
   return (
@@ -16,4 +18,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Home;
