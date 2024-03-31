@@ -9,7 +9,7 @@
 }
 
 body {
-    background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.4)), url("/bg.png") no-repeat center / cover;
+    background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.4)), url("/bg1.jpeg") no-repeat center / cover;
     background-attachment: fixed;
 }
 
