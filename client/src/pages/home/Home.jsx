@@ -4,7 +4,7 @@ import SortRepos from "../../components/sortRepo/SortRepos";
 import ProfileDetails from "../../components/profileDetails/ProfileDetails";
 import Repos from "../../components/repos/Repos";
 import toast from "react-hot-toast";
-//import Spinner from "../../components/spinner/Spinner";
+import Spinner from "../../components/spinner/Spinner";
 
 const Home = () => {
   const [userProfile, setuserProfile] = useState(null);
@@ -51,7 +51,9 @@ const Home = () => {
       <div className="flex gap-4 flex-col lg:flex-row justify-center items-center">
         <ProfileDetails  userProfile={userProfile}/>
         <Repos />
-        {/* <Spinner /> */}
+        { loading && (
+          <Spinner />
+        )}
       </div>
     </div>
   )

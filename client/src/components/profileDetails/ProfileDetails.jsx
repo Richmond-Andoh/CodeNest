@@ -3,8 +3,10 @@ import { RiGitRepositoryFill, RiUserFollowFill, RiUserFollowLine } from "react-i
 import { FaXTwitter } from "react-icons/fa6";
 import { TfiThought } from "react-icons/tfi";
 import { FaEye } from "react-icons/fa";
+import { formatMemberSince } from "../../utils/formattedDate";
 
 const ProfileDetails = ({ userProfile }) => {
+    const dateCreated = formatMemberSince(userProfile?.created_at);
 	// const userProfile = {
 	// 	avatar_url: "https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745",
 	// 	bio: "👨🏻‍💻👨🏻‍💻👨🏻‍💻",
@@ -76,7 +78,7 @@ const ProfileDetails = ({ userProfile }) => {
 				{/* Member Since Date */}
 				<div className='my-2'>
 					<p className='text-gray-600 font-bold text-sm'>Member since</p>
-					<p className=''>{userProfile?.created_at}</p>
+					<p className=''>{dateCreated}</p>
 				</div>
 
 				{/* Email Address */}
