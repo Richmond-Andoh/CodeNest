@@ -1,5 +1,6 @@
 import Search from "../../components/search/Search";
 import SortRepos from "../../components/sortRepo/SortRepos";
+import ProfileDetails from "../../components/profileDetails/ProfileDetails";
 
 const Home = () => {
   return (
@@ -7,9 +8,9 @@ const Home = () => {
       <Search />
       <SortRepos />
       <div className="flex gap-4 flex-col lg:flex-row justify-center items-center">
-        {/* <ProfileDetails />
+        <ProfileDetails />
         <Repos />
-        <Spinner /> */}
+        <Spinner />
       </div>
     </div>
   )
