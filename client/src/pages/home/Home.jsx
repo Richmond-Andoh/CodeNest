@@ -18,9 +18,9 @@ const Home = () => {
     setloading(true);
 
     try {
-      
+
       // fetch user profile
-      const userRes = await fetch("https://docs.github.com/en/rest/users/richmond-andoh");
+      const userRes = await fetch("https://api.github.com/users/richmond-andoh");
       const userProfile = await userRes.json();
       setuserProfile(userProfile);
 
@@ -35,8 +35,10 @@ const Home = () => {
 
     } catch (error) {
       toast.error(error.message)
+    } finally {
+      setloading(false)
     }
-  })
+  }, [])
 
   useEffect(() => {
     getUserProfileAndRepos();
@@ -47,7 +49,7 @@ const Home = () => {
       <Search />
       <SortRepos />
       <div className="flex gap-4 flex-col lg:flex-row justify-center items-center">
-        <ProfileDetails />
+        <ProfileDetails  userProfile={userProfile}/>
         <Repos />
         {/* <Spinner /> */}
       </div>
