@@ -12,7 +12,7 @@ import Logout from "../logout/Logout";
 
 
 const Sidebar = () => {
-    const authUser = false;
+    const authUser = true;
   return (
     <aside className="flex flex-col min-w-12 items-center sm:w-16 sticky top-0 left-0 h-screen py-8 overflow-y-auto
      border-r bg-glass

@@ -9,7 +9,7 @@ const Likes = () => {
             <th scope="col" className="p-4">
               <div className="flex items-center">No</div>
             </th>
-            <th scope="col" className="px-y py-2">
+            <th scope="col" className="px-6 py-2">
               Username
             </th>
 
