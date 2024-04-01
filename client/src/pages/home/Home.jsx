@@ -48,7 +48,7 @@ const Home = () => {
     <div className="m-4">
       <Search />
       <SortRepos />
-      <div className="flex gap-4 flex-col lg:flex-row justify-center items-center">
+      <div className="flex gap-4 flex-col lg:flex-row justify-center">
         { userProfile && !loading && <ProfileDetails  userProfile={userProfile}/>}
 
         {!loading && <Repos repos={repos}/>}
