@@ -1,10 +1,21 @@
 /* eslint-disable react/prop-types */
 import { FaCodeBranch, FaCopy, FaRegStar } from "react-icons/fa";
 import { FaCodeFork } from "react-icons/fa6";
-import { formatDate } from "../../utils/formattedDate";
+import { formatDate, PROGRAMMING_LANGUAGES } from "../../utils/index";
+import toast from "react-hot-toast";
 
 const Repo = ({ repo }) => {
     const formattedDate =  formatDate(repo.created_at);
+
+    const handleClone = async(repo) => {
+        try {
+            await navigator.clipboard.writeText(repo.clone_url)
+            toast.success("Repository URL copied!");
+            
+        } catch (error) {
+            toast.error("Failed to clone to Clipboard");
+        }
+    }
 
 	return (
 		<li className='mb-10 ms-7'>
@@ -35,11 +46,11 @@ const Repo = ({ repo }) => {
 				>
 					<FaCodeFork /> { repo.forks_count}
 				</span>
-				<span
+				<span onClick={()=>{handleClone(repo)}}
 					className='cursor-pointer bg-green-100 text-green-800 text-xs
 					font-medium px-2.5 py-0.5 rounded-full flex items-center gap-1'
 				>
-					<FaCopy /> { repo.clone_url }
+					<FaCopy /> Clone
 				</span>
 			</div>
 
@@ -52,7 +63,11 @@ const Repo = ({ repo }) => {
 			<p className='mb-4 text-base font-normal text-gray-500'>
                 { repo.description ? repo.description.slice(0, 500) : "No description"}
             </p>
-			<img src={"/javascript.svg"} alt='Programming language icon' className='h-8' />
+
+            { PROGRAMMING_LANGUAGES[repo.language] ? (
+                <img src={PROGRAMMING_LANGUAGES[repo.language]} alt='Programming language icon' className='h-8' />
+
+            ) : null}
 		</li>
 	);
 };
