@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { IoLocationOutline } from "react-icons/io5";
 import { RiGitRepositoryFill, RiUserFollowFill, RiUserFollowLine } from "react-icons/ri";
 import { FaXTwitter } from "react-icons/fa6";
