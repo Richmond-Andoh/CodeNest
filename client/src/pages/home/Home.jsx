@@ -11,7 +11,7 @@ const Home = () => {
   const [repos, setRepos] = useState([]);
   const [loading, setloading] = useState(false);
 
-  const [sortType, setsortType] = useState("forks")
+  //const [sortType, setsortType] = useState("forks")
 
   const getUserProfileAndRepos = useCallback(async() => {
     //set loading to true before making the request
@@ -50,10 +50,13 @@ const Home = () => {
       <SortRepos />
       <div className="flex gap-4 flex-col lg:flex-row justify-center items-center">
         { userProfile && !loading && <ProfileDetails  userProfile={userProfile}/>}
-        { repos.length > 0 &&!loading && <Repos repos={repos}/>}
+
+        {!loading && <Repos repos={repos}/>}
+
         { loading && (
           <Spinner />
         )}
+        
       </div>
     </div>
   )
