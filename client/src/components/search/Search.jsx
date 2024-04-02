@@ -4,9 +4,9 @@ import { IoSearch } from "react-icons/io5";
 const Search = ({ searchInputHandler }) => {
 
 	const [username, setUsername] = useState("")
-	
+
 	return (
-		<form className='max-w-xl mx-auto p-2' onSubmit={searchInputHandler}>
+		<form className='max-w-xl mx-auto p-2' onSubmit={(e) => searchInputHandler(e, username)}>
 			<label htmlFor='default-search' className='mb-2 text-sm font-medium text-gray-900 sr-only'>
 				Search
 			</label>
