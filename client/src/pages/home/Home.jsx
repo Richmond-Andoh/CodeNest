@@ -11,9 +11,9 @@ const Home = () => {
   const [repos, setRepos] = useState([]);
   const [loading, setloading] = useState(false);
 
-  const [sortType, setsortType] = useState("")
+  const [sortType, setsortType] = useState("recent")
 
-  const getUserProfileAndRepos = useCallback(async(username) => {
+  const getUserProfileAndRepos = useCallback(async(username = "richmond-andoh") => {
     //set loading to true before making the request
     setloading(true);
 
@@ -52,10 +52,16 @@ const Home = () => {
      setuserProfile(null);
      setRepos([]);
 
-     const { userProfile, repos } = await getUserProfileAndRepos(username)
+     const { userProfile, repos} = await getUserProfileAndRepos(username);
+     //console.log(userProfile, repos);
+     //if (!userProfile && !repos.length) throw new Error('No User Found');
+
+     //window.scrollTo({ top: 0, behavior: 'smooth' });
      setuserProfile(userProfile);
      setRepos(repos);
      setloading(false);
+
+   
   };
 
   const sortHandler = (sortType) => {
@@ -71,15 +77,14 @@ const Home = () => {
       repos.sort((a, b) => b.forks_count - a.forks_count);
     }
 
-    else {
-      setsortType(sortType);
-      setRepos([...repos]);
-    }
+    setsortType(sortType);
+    setRepos([...repos]);
   }
+  
   return (
     <div className="m-4">
       <Search searchInputHandler= {searchInputHandler} loading={loading}/>
-      { repos.length > 0 && <SortRepos sortHanler={sortHandler} sortType={sortType} />}
+      { repos.length > 0 && <SortRepos sortHandler={sortHandler} sortType={sortType} />}
       <div className="flex gap-4 flex-col lg:flex-row justify-center">
         { userProfile && !loading && <ProfileDetails  userProfile={userProfile}/>}
 

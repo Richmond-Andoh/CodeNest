@@ -3,7 +3,7 @@ import { IoSearch } from "react-icons/io5";
 
 const Search = ({ searchInputHandler }) => {
 
-	const [username, setUsername] = useState("")
+	const [username, setUsername] = useState("");
 
 	return (
 		<form className='max-w-xl mx-auto p-2' onSubmit={(e) => searchInputHandler(e, username)}>
