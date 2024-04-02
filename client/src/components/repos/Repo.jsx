@@ -64,9 +64,9 @@ const Repo = ({ repo }) => {
                 { repo.description ? repo.description.slice(0, 500) : "No description"}
             </p>
 
-			<p className='mb-4 text-base font-normal text-gray-500'>
+			{/* <p className='mb-4 text-base font-normal text-gray-500'>
                 { repo.commits_url}
-            </p>
+            </p> */}
 
             { PROGRAMMING_LANGUAGES[repo.language] ? (
                 <img src={PROGRAMMING_LANGUAGES[repo.language]} alt='Programming language icon' className='h-8' />
