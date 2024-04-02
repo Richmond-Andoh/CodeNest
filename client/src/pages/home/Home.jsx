@@ -13,14 +13,14 @@ const Home = () => {
 
   //const [sortType, setsortType] = useState("forks")
 
-  const getUserProfileAndRepos = useCallback(async() => {
+  const getUserProfileAndRepos = useCallback(async(username) => {
     //set loading to true before making the request
     setloading(true);
 
     try {
 
       // fetch user profile
-      const userRes = await fetch("https://api.github.com/users/richmond-andoh");
+      const userRes = await fetch(`https://api.github.com/users/${username}`);
       const userProfile = await userRes.json();
       setuserProfile(userProfile);
 
@@ -44,9 +44,23 @@ const Home = () => {
     getUserProfileAndRepos();
   }, [getUserProfileAndRepos]);
   
+  // Search functionality
+  const  searchInputHandler = async (e, username) => {
+     e.preventDefault();
+
+     setloading(true);
+     setuserProfile(null);
+     setRepos([]);
+
+     const { userProfile, repos } = await getUserProfileAndRepos(username)
+     setuserProfile(userProfile);
+     setRepos(repos);
+     setloading(false);
+  };
+
   return (
     <div className="m-4">
-      <Search />
+      <Search searchInputHandler= {searchInputHandler} loading={loading}/>
       <SortRepos />
       <div className="flex gap-4 flex-col lg:flex-row justify-center">
         { userProfile && !loading && <ProfileDetails  userProfile={userProfile}/>}
