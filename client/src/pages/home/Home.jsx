@@ -11,7 +11,7 @@ const Home = () => {
   const [repos, setRepos] = useState([]);
   const [loading, setloading] = useState(false);
 
-  //const [sortType, setsortType] = useState("forks")
+  const [sortType, setsortType] = useState("")
 
   const getUserProfileAndRepos = useCallback(async(username) => {
     //set loading to true before making the request
@@ -46,7 +46,7 @@ const Home = () => {
   
   // Search functionality
   const  searchInputHandler = async (e, username) => {
-     e.preventDefault();
+    e.preventDefault();
 
      setloading(true);
      setuserProfile(null);
@@ -58,10 +58,28 @@ const Home = () => {
      setloading(false);
   };
 
+  const sortHandler = (sortType) => {
+    if(sortType === "recent"){
+      repos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)); // descending order
+    }
+
+    else if(sortType === "stars"){
+      repos.sort((a, b) => b.startgazers_count - a.startgazers_count); // descending order
+    }
+
+    else if(sortType === "forks"){
+      repos.sort((a, b) => b.forks_count - a.forks_count);
+    }
+
+    else {
+      setsortType(sortType);
+      setRepos([...repos]);
+    }
+  }
   return (
     <div className="m-4">
       <Search searchInputHandler= {searchInputHandler} loading={loading}/>
-      <SortRepos />
+      { repos.length > 0 && <SortRepos sortHanler={sortHandler} sortType={sortType} />}
       <div className="flex gap-4 flex-col lg:flex-row justify-center">
         { userProfile && !loading && <ProfileDetails  userProfile={userProfile}/>}
 
