@@ -14,7 +14,11 @@ const Explore = () => {
 	   setrepos([]);
 
 	   try {
-		const  res = await fetch(`https://api.github.com/search/repositories?q=language:${language}&sort=stars&order=desc&per_page=10`);
+		const  res = await fetch(`https://api.github.com/search/repositories?q=language:${language}&sort=stars&order=desc&per_page=10`, {
+			headers: {
+				authorization: `token ${import.meta.env.VITE_GITHUB_API_KEY}`
+			}
+		});
 		const data = await res.json();
 		setrepos(data.items);
 		setselectedLanguage(language);

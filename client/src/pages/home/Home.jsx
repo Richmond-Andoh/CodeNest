@@ -20,7 +20,11 @@ const Home = () => {
     try {
 
       // fetch user profile
-      const userRes = await fetch(`https://api.github.com/users/${username}`);
+      const userRes = await fetch(`https://api.github.com/users/${username}`, {
+        headers: {
+          authorization: `token ${import.meta.env.VITE_GITHUB_API_KEY}`
+        }
+      });
       const userProfile = await userRes.json();
       setuserProfile(userProfile);
 
@@ -68,7 +72,7 @@ const Home = () => {
     }
 
     else if(sortType === "stars"){
-      repos.sort((a, b) => b.startgazers_count - a.startgazers_count); // descending order
+      repos.sort((a, b) => b.stargazers_count - a.stargazers_count); // descending order
     }
 
     else if(sortType === "forks"){
