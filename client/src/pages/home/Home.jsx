@@ -28,6 +28,7 @@ const Home = () => {
       const userRepos = await fetch(userProfile?.repos_url);
       const repos = await userRepos.json();
       setRepos(repos);
+      setsortType("recent")
 
       // log response to console
        console.log("User Profile: ", userProfile, "repos: ", repos);
@@ -59,8 +60,9 @@ const Home = () => {
      //window.scrollTo({ top: 0, behavior: 'smooth' });
      setuserProfile(userProfile);
      setRepos(repos);
+     repos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
      setloading(false);
-
+     setsortType("recent")
    
   };
 

@@ -17,6 +17,7 @@ const Explore = () => {
 		const  res = await fetch(`https://api.github.com/search/repositories?q=language:${language}&sort=stars&order=desc&per_page=10`);
 		const data = await res.json();
 		setrepos(data.items);
+		setselectedLanguage(language);
 
 	   } catch (error) {
 		toast.error("error.message");
@@ -45,7 +46,7 @@ const Explore = () => {
 						Repositories
 					</h2>
 				)}
-				 { !loading && repos.length > 0 && <Repos repos={repos} />}
+				 { !loading && repos.length > 0 && <Repos repos={repos} alwaysFullWidth />}
 				 { loading && <Spinner />}
 			</div>
 		</div>
