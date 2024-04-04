@@ -27,13 +27,13 @@ const Home = () => {
       // get all repo of user
       const userRepos = await fetch(userProfile?.repos_url);
       const repos = await userRepos.json();
+
+      repos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
       setRepos(repos);
-      setsortType("recent")
+      //setsortType("recent")
 
-      // log response to console
-       console.log("User Profile: ", userProfile, "repos: ", repos);
-
-
+      return { userProfile, repos}
     } catch (error) {
       toast.error(error.message)
     } finally {
@@ -54,13 +54,9 @@ const Home = () => {
      setRepos([]);
 
      const { userProfile, repos} = await getUserProfileAndRepos(username);
-     //console.log(userProfile, repos);
-     //if (!userProfile && !repos.length) throw new Error('No User Found');
-
-     //window.scrollTo({ top: 0, behavior: 'smooth' });
+     
      setuserProfile(userProfile);
      setRepos(repos);
-     repos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
      setloading(false);
      setsortType("recent")
    
