@@ -1,10 +1,14 @@
 import express from "express";
 import dotenv from "dotenv";
 import userRoute from "./routes/userRoute.js";
-const app = express();
 
 // configure dotenv
 dotenv.config();
+
+const app = express();
+
+app.use(express.json()); // to support JSON-encoded bodies
+
 
 
 app.get( "/", ( req, res ) => {
