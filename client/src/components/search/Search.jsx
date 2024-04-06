@@ -18,7 +18,7 @@ const Search = ({ searchInputHandler }) => {
 					type='search'
 					id='default-search'
 					className='block w-full p-4 ps-10 text-sm rounded-lg bg-glass focus:ring-blue-500 focus:border-blue-500 bg-transparent focus:bg-transparent '
-					placeholder='i.e. johndoe'
+					placeholder='i.e. richy'
 					required
 					value={username}
 					onChange={(e) => setUsername(e.target.value)}
