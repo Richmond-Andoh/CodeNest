@@ -11,6 +11,8 @@ export const getUserProfileAndRepos = async(req, res) => {
         });
         const userProfile = await userRes.json();
 
+        console.log(userProfile);
+        
         // get all repo of user
         const userRepos = await fetch(userProfile?.repos_url, {
             headers: {
