@@ -20,24 +20,30 @@ const Home = () => {
     try {
 
       // fetch user profile
-      const userRes = await fetch(`https://api.github.com/users/${username}`, {
-        headers: {
-          authorization: `token ${import.meta.env.VITE_GITHUB_API_KEY}`
-        }
-      });
-      const userProfile = await userRes.json();
-      setuserProfile(userProfile);
+      // const userRes = await fetch(`https://api.github.com/users/${username}`, {
+      //   headers: {
+      //     authorization: `token ${import.meta.env.VITE_GITHUB_API_KEY}`
+      //   }
+      // });
+      // const userProfile = await userRes.json();
+      // setuserProfile(userProfile);
 
       // get all repo of user
-      const userRepos = await fetch(userProfile?.repos_url);
-      const repos = await userRepos.json();
+      // const userRepos = await fetch(userProfile?.repos_url);
+      // const repos = await userRepos.json();
+
+      const res = await fetch(`http://localhost:5050/api/users/profile/${username}`);
+      if (!res.ok) throw new Error('Could not find User');
+
+      const { userProfile, repos } = await res.json();
 
       repos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 
       setRepos(repos);
-      //setsortType("recent")
+      setuserProfile(userProfile);
 
-      return { userProfile, repos}
+      return { userProfile, repos};
+      
     } catch (error) {
       toast.error(error.message)
     } finally {
