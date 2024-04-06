@@ -22,7 +22,7 @@ app.use("/api/users",  userRoute);
 app.use("/api/explore", exploreRoute)
 
 const  startServer = async () =>{
-   await dbConnection() ;
+   await dbConnection();
    
    app.listen(PORT, () => {
     console.log(`Server is listening on Port http://localhost:${PORT}`)
