@@ -21,8 +21,8 @@ const userSchema = new mongoose.Schema({
         type: String
     },
 
-    likedProfile: {
-        type: String,
+    likedProfiles: {
+        type: [String],
         default: []
     },
 
@@ -43,7 +43,7 @@ const userSchema = new mongoose.Schema({
             }
         }
     ]
-}, { timeStamp: true })
+}, { timeStamps: true })
 
 const User = mongoose.model("User", userSchema);
 

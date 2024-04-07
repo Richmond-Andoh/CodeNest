@@ -43,9 +43,9 @@ passport.use(new GitHubStrategy({
             username: profile.username,
             profileUrl: profile.profileUrl,
             avatarUrl: profile.photos[0].value,
-            likedProfile: [],
+            likedProfiles: [],
             likedBy: []
-        })
+        });
 
         await newUser.save();
         done(null, newUser);
