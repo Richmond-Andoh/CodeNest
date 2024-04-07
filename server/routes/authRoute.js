@@ -9,6 +9,13 @@ authRoutes.get("/github/callback", passport.authenticate("github", { failureRedi
     res.redirect(process.env.CLIENT_BASE_URL);
 });
 
+authRoutes.get("/check", (req, res) =>{
+    if(req.isAuthenticated){
+        res.send({ user: req.user })
+    } else {
+        res.send({ user: null })
+    }
+})
 authRoutes.get("/logout", (req, res) => {
     req.session.destroy((error) => {
         res.send({error: "Logout"})
