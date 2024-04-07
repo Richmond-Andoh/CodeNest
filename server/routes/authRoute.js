@@ -9,4 +9,13 @@ authRoutes.get("/github/callback", passport.authenticate("github", { failureRedi
     res.redirect(process.env.CLIENT_BASE_URL);
 });
 
+authRoutes.get("/logout", (req, res) => {
+    req.session.destroy((error) => {
+        res.send({error: "Logout"})
+    })
+
+    // or 
+    // req.destroy();
+    // res.redirect("/");
+})
 export default authRoutes;
