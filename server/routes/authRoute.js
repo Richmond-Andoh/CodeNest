@@ -2,6 +2,7 @@ import express from "express";
 
 const authRoutes = express.Router();
 
-authRoutes.post("/login", )
+authRoutes.get("/github")
+authRoutes.get("/github/callback")
 
 export default authRoutes;
