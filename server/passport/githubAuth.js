@@ -1,7 +1,7 @@
 import passport from "passport";
 import { Strategy as GitHubStrategy } from "passport-github2";
 import dotenv from "dotenv";
-
+import User from "../modules/User.js";
 
 
 
@@ -33,15 +33,33 @@ passport.use(new GitHubStrategy({
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
     callbackURL: "/api/auth/github/callback"
   },
-  function(accessToken, refreshToken, profile, done) {
+  async function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
-    process.nextTick(function () {
+    const user =  await User.findOne({ username: profile.username });
+    
+    if(!user) {
+        const newUser = new User({
+            name: profile.displayName,
+            username: profile.username,
+            profileUrl: profile.profileUrl,
+            avatarUrl: profile.photos[0].value,
+            likedProfile: [],
+            likedBy: []
+        })
+
+        await newUser.save();
+        done(null, newUser);
+    }  else {
+        done(null, user);
+    }
+
+    // process.nextTick(function () {
       
-      // To keep the example simple, the user's GitHub profile is returned to
-      // represent the logged-in user.  In a typical application, you would want
-      // to associate the GitHub account with a user record in your database,
-      // and return that user instead.
-      return done(null, profile);
-    });
+    //   To keep the example simple, the user's GitHub profile is returned to
+    //   represent the logged-in user.  In a typical application, you would want
+    //   to associate the GitHub account with a user record in your database,
+    //   and return that user instead.
+    //   return done(null, profile);
+    // });
   }
 ));

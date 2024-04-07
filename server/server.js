@@ -1,6 +1,11 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+import passport from "passport";
+import session from "express-session";
+
+import "./passport/githubAuth.js";
+
 import dbConnection from "./db_connection/mongodb_connection.js";
 import userRoute from "./routes/userRoute.js";
 import exploreRoute from "./routes/exploreRoute.js";
@@ -10,7 +15,14 @@ import authRoutes from "./routes/authRoute.js";
 dotenv.config();
 
 const app = express();
-app.use(cors());
+
+//middlewares 
+app.use(session({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
+// Initialize Passport!  Also use passport.session() middleware, to support
+// persistent login sessions (recommended).
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(cors());  // enable all CORS requests
 app.use(express.json()); // to support JSON-encoded bodies
 
 const PORT = process.env.PORT || 5500
