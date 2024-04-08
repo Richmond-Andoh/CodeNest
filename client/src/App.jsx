@@ -14,8 +14,8 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={ !authUser ? <Login /> : <Navigate to={"/"}/>} />
           <Route path="/register" element={ !authUser ? <Register /> : <Navigate to={"/"} />} />
-          <Route path="/explore" element={<Explore />} />
-          <Route path="/likes" element={<Likes />} />
+          <Route path="/explore" element={ authUser ? <Explore /> : <Navigate to={"/login"} />} />
+          <Route path="/likes" element={ authUser ? <Likes /> : <Navigate to={"/login"} />} />
         </Routes>
       </div>
     </div>
