@@ -3,7 +3,7 @@ import Search from "../../components/search/Search";
 import SortRepos from "../../components/sortRepo/SortRepos";
 import ProfileDetails from "../../components/profileDetails/ProfileDetails";
 import Repos from "../../components/repos/Repos";
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import Spinner from "../../components/spinner/Spinner";
 
 const Home = () => {

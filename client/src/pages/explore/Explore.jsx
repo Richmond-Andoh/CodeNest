@@ -1,6 +1,6 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 import { useState } from "react";
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import Repos from "../../components/repos/Repos";
 import Spinner from "../../components/spinner/Spinner"
 

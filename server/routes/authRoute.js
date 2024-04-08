@@ -18,11 +18,12 @@ authRoutes.get("/check", (req, res) =>{
 })
 authRoutes.get("/logout", (req, res) => {
     req.session.destroy((error) => {
-        res.send({error: "Logout"})
+        res.send({error: "Logout was unsuccessfull"})
     })
 
     // or 
     // req.destroy();
     // res.redirect("/");
-})
+});
+
 export default authRoutes;
