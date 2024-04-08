@@ -6,13 +6,14 @@ import { MdOutlineExplore } from "react-icons/md";
 import { RiLoginCircleLine } from "react-icons/ri";
 import { GiArchiveRegister } from "react-icons/gi";
 import Logout from "../logout/Logout";
+import { useAuthContext } from "../../context/AuthContext"
 
 
 
 
 
 const Sidebar = () => {
-    const authUser = true;
+    const {authUser} = useAuthContext();
   return (
     <aside className="flex flex-col min-w-12 items-center sm:w-16 sticky top-0 left-0 h-screen py-8 overflow-y-auto
      border-r bg-glass

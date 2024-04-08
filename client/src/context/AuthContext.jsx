@@ -6,12 +6,13 @@ import { toast } from "react-hot-toast";
 export const AuthContext = createContext();
 
 export const useAuthContext = () => {
-    useContext(AuthContext);
+   return useContext(AuthContext);
 }
 
-export const AuthContentProvider = ({ children }) => {
+export const AuthContextProvider = ({ children }) => {
     const [authUser, setauthUser] = useState(null);
-    const [loading, setloading] = useState(false)
+    const [loading, setloading] = useState(false);
+
     useEffect(() => {
         const checkUserLoggedIn = async() => {
 
@@ -23,7 +24,8 @@ export const AuthContentProvider = ({ children }) => {
                 setauthUser(data.user); // null or authenticated user object
             } catch (error) {
                 toast.error(error.message);
-            } finally {
+            } 
+            finally {
                 setloading(false);
             }
         }
