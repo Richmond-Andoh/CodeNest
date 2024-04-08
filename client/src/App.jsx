@@ -1,8 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import { Home, Login, Register, Explore, Likes, Sidebar } from "./pagesImport";
-
+import { useAuthContext } from "./context/AuthContext";
 
 const App = () => {
+  const { authUser } = useAuthContext();
   return (
     <div className="flex text-white">
       <Sidebar />
