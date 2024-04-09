@@ -1,6 +1,31 @@
+import { useState, useEffect } from "react";
+import { formatDate } from "../../utils";
 import { FaHeart } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 const Likes = () => {
+
+	const [likes, setlikes] = useState([]);
+
+	useEffect(() => {
+		const getLikes = async () => {
+			try {
+				const res = await fetch("api/users/likes", {
+					method: "POST",
+					credentials: "include"
+				});
+
+				const data = await res.json();
+
+				if(data.error) throw new Error(data.error)
+				setlikes(data.likedBy);
+			} catch (error) {
+				toast.error(error.message)
+			}
+		}
+
+		getLikes();
+	}, [])
   return (
     <div className="relative oveerflow-x-auto shadow-lg rounded-lg px-4">
       <table className="w-full text-sm text-left rtl:text-right bg-glass overflow-hidden">
@@ -24,23 +49,25 @@ const Likes = () => {
         </thead>
         
         <tbody>
-					<tr className='bg-glass border-b'>
+			{
+				likes.map((like, idx) => (
+					<tr className='bg-glass border-b' key={like.username}>
 						<td className='w-4 p-4'>
 							<div className='flex items-center'>
-								<span>1</span>
+								<span>{ idx + 1}</span>
 							</div>
 						</td>
 						<th scope='row' className='flex items-center px-6 py-4 whitespace-nowrap '>
 							<img
 								className='w-10 h-10 rounded-full'
-								src={"https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745"}
-								alt='Jese image'
+								src={like.avatarUrl}
+								alt='User Avatar Image'
 							/>
 							<div className='ps-3'>
-								<div className='text-base font-semibold'>dasdas</div>
+								<div className='text-base font-semibold'>{like.username}</div>
 							</div>
 						</th>
-						<td className='px-6 py-4'>das</td>
+						<td className='px-6 py-4'>{ formatDate(like.likedDate)}</td>
 						<td className='px-6 py-4'>
 							<div className='flex items-center'>
 								<FaHeart size={22} className='text-red-500 mx-2' />
@@ -48,7 +75,8 @@ const Likes = () => {
 							</div>
 						</td>
 					</tr>
-				</tbody>
+				))}
+		</tbody>
       </table>
     </div>
   )
