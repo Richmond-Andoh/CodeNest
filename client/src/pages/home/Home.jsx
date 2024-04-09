@@ -32,7 +32,7 @@ const Home = () => {
       // const userRepos = await fetch(userProfile?.repos_url);
       // const repos = await userRepos.json();
 
-      const res = await fetch(`http://localhost:5050/api/users/profile/${username}`);
+      const res = await fetch(`/api/users/profile/${username}`);
       if (!res.ok) throw new Error('Could not find User');
 
       const { userProfile, repos } = await res.json();

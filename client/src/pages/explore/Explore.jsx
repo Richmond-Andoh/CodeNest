@@ -20,7 +20,7 @@ const Explore = () => {
 		// 	}
 		// });
 		// const data = await res.json();
-		const res = await fetch(`http://localhost:5050/api/explore/repos/${language}`);
+		const res = await fetch(`/api/explore/repos/${language}`);
 		const { repos } = await res.json();
 
 		if (repos) {

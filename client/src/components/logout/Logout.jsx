@@ -4,9 +4,9 @@ import { toast } from "react-hot-toast";
 import { useAuthContext } from "../../context/AuthContext";
 
 const Logout = () => {
-	const [ authUser, setauthUser ] = useAuthContext();
+	const { authUser, setauthUser } = useAuthContext();
 	
-	const handleLogut = async () => {
+	const handleLogout = async () => {
 		try {
 			
 			const res = await fetch("/api/auth/logout", { credentials: "include"});
@@ -25,7 +25,7 @@ const Logout = () => {
 				className='w-10 h-10 rounded-full border border-gray-800'
 			/>
 
-			<div onClick={handleLogut} className='cursor-pointer flex items-center p-2 rounded-lg bg-glass mt-auto border border-gray-800'>
+			<div onClick={handleLogout} className='cursor-pointer flex items-center p-2 rounded-lg bg-glass mt-auto border border-gray-800'>
 				<RiLogoutCircleLine size={23} />
 			</div>
 		</>

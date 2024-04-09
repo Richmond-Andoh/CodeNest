@@ -51,7 +51,7 @@ const Sidebar = () => {
             </Link>
         )}
          
-         { !authUser && (
+         { authUser && (
             <div className="flex flex-col mt-auto gap-2">
                <Logout />
             </div>
