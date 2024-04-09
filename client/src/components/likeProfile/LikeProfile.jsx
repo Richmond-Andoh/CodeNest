@@ -18,10 +18,8 @@ const LikeProfile = ({ userProfile }) => {
 
       const data = await res.json();
 
-      if(data.error) {
-        throw new Error(data.error),
-        toast.error("Unable to like profile");
-      }
+      if(data.error) throw new Error(data.error);
+      toast.success(data.message);
 
       toast.success(data.message);
     } catch (error) {
