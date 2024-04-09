@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { FaHeart } from "react-icons/fa6";
 import { useAuthContext } from "../../context/AuthContext";
 import toast from "react-hot-toast";
@@ -6,7 +7,7 @@ const LikeProfile = ({ userProfile }) => {
 
   const { authUser } = useAuthContext();
 
-  const isOwnProfile = authUser?.username === userProfile.login
+  const isOwnProfile = authUser?.username === userProfile.login;
 
   const handleLikes = async () => {
     try {
@@ -38,4 +39,4 @@ const LikeProfile = ({ userProfile }) => {
   )
 }
 
-export default LikeProfile
+export default LikeProfile;
