@@ -15,7 +15,7 @@ const App = () => {
 
       <div className="max-w-5xl my-5 transition-all duration-300 mx-auto flex-1">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={!authUser ? <Navigate to={"/login"} /> : <Home />} />
           <Route path="/login" element={ !authUser ? <Login /> : <Navigate to={"/"}/>} />
           <Route path="/register" element={ !authUser ? <Register /> : <Navigate to={"/"} />} />
           <Route path="/explore" element={ authUser ? <Explore /> : <Navigate to={"/login"} />} />

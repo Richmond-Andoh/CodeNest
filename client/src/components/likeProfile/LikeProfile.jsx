@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { FaHeart } from "react-icons/fa6";
+import { FaHeart } from "react-icons/fa";
 import { useAuthContext } from "../../context/AuthContext";
 import toast from "react-hot-toast";
 
@@ -32,12 +32,10 @@ const LikeProfile = ({ userProfile }) => {
   if(!authUser || isOwnProfile) return null;
 
   return (
-    <div>
-      <button className="p-2 text-xs w-full font-medium rounded-md bg-glass border border-blue-400 flex items-center gap-2"
-        onClick={handleLikes}>
-        <FaHeart size={25}/> Like Profile
-      </button>
-    </div>
+    <button className="p-2 text-xs w-full font-medium rounded-md bg-glass border border-blue-400 flex items-center gap-2"
+      onClick={handleLikes}>
+      <FaHeart size={16}/> Like Profile
+    </button>
   )
 }
 
