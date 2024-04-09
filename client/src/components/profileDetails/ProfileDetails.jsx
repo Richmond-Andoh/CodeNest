@@ -5,6 +5,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import { TfiThought } from "react-icons/tfi";
 import { FaEye } from "react-icons/fa";
 import { formatMemberSince } from "../../utils/formattedDate";
+import LikeProfile from "../likedProfile/LikeProfile";
 
 const ProfileDetails = ({ userProfile }) => {
     const dateCreated = formatMemberSince(userProfile?.created_at);
@@ -35,6 +36,7 @@ const ProfileDetails = ({ userProfile }) => {
 
 					{/* View on Github */}
 					<div className='flex gap-2 items-center flex-col'>
+						<LikeProfile userProfile={userProfile}/>
 						<a
 							href={userProfile?.html_url}
 							target='_blank'
