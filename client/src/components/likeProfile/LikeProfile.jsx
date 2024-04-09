@@ -32,10 +32,12 @@ const LikeProfile = ({ userProfile }) => {
   if(!authUser || isOwnProfile) return null;
 
   return (
-    <button className="p-2 text-xs w-full font-medium rounded-md bg-glass border border-blue-400 flex items-center gap-2'
-    " onClick={handleLikes}>
+    <div>
+      <button className="p-2 text-xs w-full font-medium rounded-md bg-glass border border-blue-400 flex items-center gap-2"
+        onClick={handleLikes}>
         <FaHeart size={25}/> Like Profile
-    </button>
+      </button>
+    </div>
   )
 }
 

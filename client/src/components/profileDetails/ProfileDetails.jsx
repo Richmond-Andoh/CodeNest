@@ -5,7 +5,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import { TfiThought } from "react-icons/tfi";
 import { FaEye } from "react-icons/fa";
 import { formatMemberSince } from "../../utils/formattedDate";
-import LikeProfile from "../likedProfile/LikeProfile";
+import LikeProfile from "../likeProfile/LikeProfile";
 
 const ProfileDetails = ({ userProfile }) => {
     const dateCreated = formatMemberSince(userProfile?.created_at);

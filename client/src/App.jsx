@@ -8,6 +8,7 @@ const App = () => {
   console.log("Authenticated User :", authUser);
 
   if(loading) return null; // Loading screen while checking user authentication status
+  
   return (
     <div className="flex text-white">
       <Sidebar />

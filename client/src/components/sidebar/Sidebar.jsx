@@ -13,7 +13,9 @@ import { useAuthContext } from "../../context/AuthContext"
 
 
 const Sidebar = () => {
-    const {authUser} = useAuthContext();
+
+  const {authUser} = useAuthContext();
+
   return (
     <aside className="flex flex-col min-w-12 items-center sm:w-16 sticky top-0 left-0 h-screen py-8 overflow-y-auto
      border-r bg-glass
