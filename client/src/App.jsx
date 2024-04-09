@@ -1,10 +1,13 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { Home, Login, Register, Explore, Likes, Sidebar } from "./pagesImport";
 import { useAuthContext } from "./context/AuthContext";
+import { Toaster } from "react-hot-toast";
 
 const App = () => {
-  const { authUser } = useAuthContext();
-  console.log("Authenticated User :", authUser)
+  const { authUser, loading } = useAuthContext();
+  console.log("Authenticated User :", authUser);
+
+  if(loading) return null; // Loading screen while checking user authentication status
   return (
     <div className="flex text-white">
       <Sidebar />
@@ -18,6 +21,8 @@ const App = () => {
           <Route path="/likes" element={ authUser ? <Likes /> : <Navigate to={"/login"} />} />
         </Routes>
       </div>
+
+      <Toaster position="top-right" reverseOrder={true} />
     </div>
   )
 }
