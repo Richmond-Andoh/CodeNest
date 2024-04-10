@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import passport from "passport";
 import session from "express-session";
+import path from "path"
 
 import "./passport/githubAuth.js";
 
@@ -25,15 +26,19 @@ app.use(passport.session());
 app.use(cors());  // enable all CORS requests
 app.use(express.json()); // to support JSON-encoded bodies
 
-const PORT = process.env.PORT || 5500
+const __dirname = path.resolve();
 
-app.get( "/", ( req, res ) => {
-    res.send("Hello, Server is ready")
-});
+
+const PORT = process.env.PORT || 5500
 
 app.use("/api/auth", authRoutes)
 app.use("/api/users",  userRoute);
 app.use("/api/explore", exploreRoute)
+app.use(express.static(path.join(__dirname, "/client/dist")));
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+})
 
 const  startServer = async () =>{
    await dbConnection();
