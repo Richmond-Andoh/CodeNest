@@ -11,7 +11,6 @@ const Likes = () => {
 		const getLikes = async () => {
 			try {
 				const res = await fetch("api/users/likes", {
-					method: "POST",
 					credentials: "include"
 				});
 
@@ -32,7 +31,7 @@ const Likes = () => {
         <thead className="text-xs uppercase bg-glass">
           <tr>
             <th scope="col" className="p-4">
-              <div className="flex items-center">No</div>
+              <div className="flex items-center">No:</div>
             </th>
             <th scope="col" className="px-6 py-2">
               Username
@@ -50,8 +49,8 @@ const Likes = () => {
         
         <tbody>
 			{
-				likes.map((like, idx) => (
-					<tr className='bg-glass border-b' key={like.username}>
+				likes.map((user, idx) => (
+					<tr className='bg-glass border-b' key={user.username}>
 						<td className='w-4 p-4'>
 							<div className='flex items-center'>
 								<span>{ idx + 1}</span>
@@ -60,14 +59,14 @@ const Likes = () => {
 						<th scope='row' className='flex items-center px-6 py-4 whitespace-nowrap '>
 							<img
 								className='w-10 h-10 rounded-full'
-								src={like.avatarUrl}
+								src={user.avatarUrl}
 								alt='User Avatar Image'
 							/>
 							<div className='ps-3'>
-								<div className='text-base font-semibold'>{like.username}</div>
+								<div className='text-base font-semibold'>{user.username}</div>
 							</div>
 						</th>
-						<td className='px-6 py-4'>{ formatDate(like.likedDate)}</td>
+						<td className='px-6 py-4'>{ formatDate(user.likedDate)}</td>
 						<td className='px-6 py-4'>
 							<div className='flex items-center'>
 								<FaHeart size={22} className='text-red-500 mx-2' />

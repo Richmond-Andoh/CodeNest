@@ -8,7 +8,7 @@ const userRoute = express.Router();
 // @route   GET api/users
 userRoute.get("/profile/:username", getUserProfileAndRepos);
 userRoute.get("/likes", ensureAuthenticated, getLikes);
-userRoute.get("/likes/:username", ensureAuthenticated, likeProfile)
+userRoute.get("/like/:username", ensureAuthenticated, likeProfile)
 
 
 export default userRoute;

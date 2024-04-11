@@ -11,7 +11,7 @@ const LikeProfile = ({ userProfile }) => {
 
   const handleLikes = async () => {
     try {
-      const res = await fetch(`/api/users/likes/${userProfile.login}`, {
+      const res = await fetch(`/api/users/like/${userProfile.login}`, {
         method: "POST",
         credentials: "include"
       });
@@ -21,7 +21,6 @@ const LikeProfile = ({ userProfile }) => {
       if(data.error) throw new Error(data.error);
       toast.success(data.message);
 
-      toast.success(data.message);
     } catch (error) {
       toast.error(error.message);
     }
