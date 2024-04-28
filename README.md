@@ -80,8 +80,7 @@ Contributions are welcome! Please fork the repository and submit a pull request 
 This project is licensed under the MIT License.
 
 ## Acknowledgements
-Icons made by Iconfinder
-Special thanks to CodeNinja for inspiration and guidance.
+- Icons made by react-icons
 
 ## Contact
 For inquiries or support, please email [richmondandoh00@gmail.com].

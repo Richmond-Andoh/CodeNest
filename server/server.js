@@ -28,7 +28,6 @@ app.use(express.json()); // to support JSON-encoded bodies
 
 const __dirname = path.resolve();
 
-
 const PORT = process.env.PORT || 5500
 
 app.use("/api/auth", authRoutes)
