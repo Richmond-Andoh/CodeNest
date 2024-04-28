@@ -19,7 +19,6 @@ CodeNest is a GitHub-like web application built using the MERN stack, which incl
 - **Database:** MongoDB Atlas
 - **Authentication:** Passport.js (GitHub strategy)
 - **APIs:** GitHub API for fetching user profiles and repositories
-- **Deployment:** Heroku for backend, Netlify for frontend
 
 ## Installation
 
