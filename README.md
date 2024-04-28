@@ -53,16 +53,21 @@ CodeNest is a GitHub-like web application built using the MERN stack, which incl
 ```
 
 ## Usage
+
 - **Sign Up:** Create a new account using the Sign Up form.
- ![Sign Up](./client/public/screenshot1.png)
+
+ ![Sign Up](./client/public/screenshot4.png)
 
 - **Log In:** Log in to your account with your credentials.
+
  ![Login](./client/public/screenshot1.png)
 
 - **Explore:** Browse through various programming languages and repositories.
+
  ![Explore](./client/public/screenshot3.png)
 
 - **View User Profiles:** Click on user profiles to view all repositories associated with a particular user.
+
  ![User Profile](./client/public/screenshot2.png)
 
 - **Like Profiles:** Authenticated users can like user profiles, adding them to their liked list.
