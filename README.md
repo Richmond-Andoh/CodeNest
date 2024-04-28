@@ -2,7 +2,7 @@
 
 CodeNest is a GitHub-like web application built using the MERN stack, which includes MongoDB, Express.js, React, and Node.js. It allows users to explore programming languages and repositories, view user profiles with all repositories, and like user profiles (authentication required). This project demonstrates proficiency in web development, including user authentication using Passport.js, data fetching from APIs, and responsive design.
 
-![CodeNest Preview](insert-image-url-here)
+![CodeNest Preview](./client/public/mobile.gif)
 
 ## Features
 
